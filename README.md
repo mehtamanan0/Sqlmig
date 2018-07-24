@@ -1,42 +1,4 @@
-# DBDiff CLI - Database Diff Command Line Interface
-
-# The Problem
-
-I've found a few solid​ ​migrat​ion tools like [Flyway](https://github.com/flyway/flyway) and [Simple DB Migrate](https://github.com/guilhermechapiewski/simple-db-migrate)​, the latter being my preference for it's simplicity​ but the former having a lot more commits and contributors.​ However,​ these are just migrators and do not help produce the actual diff/migration to be versioned​, which I would not like to do manually if it can be automated.​
-
-I found a diff tool by MySQL called [mysqldbcompare](http://dev.mysql.com/doc/mysql-utilities/1.6/en/mysqldbcompare.html), which outputs SQL​ for (some) schema and data changes​ but it​ shockingly doesn't​ ​produce valid SQL!!!
-
-I must say though everything the mysqldbcompare tool offers is great, doing the diff by connecting directly to a source and target database (can be locally or on another server) and doing a series of tests/checks (all of which can be skipped if need be), then checking both the schema and the data - but we just need it to produce valid SQL output and I think it also had trouble in validating the schema fully.
-
-​​I actually looked through A LOT of ​different ​schema and data diff tools (took me a whole weekend) and they all either:
-
-1. Only do schema diffs
-2. Are just too complex to get working or
-3. Just don't produce valid SQL
-
-# The Solution
-I think a solid migration tool mixed with an automated schema and data diff tool would be a great contribution to the open source community.
-
-This is what DBDiff is.
-
-# Features of DBDiff
--   Works on Windows, Linux & Mac command-line/Terminal because it has been developed in PHP
--   Connects to a source and target database to do the comparison diff, locally and remotely
--   Diffs can include changes to the schema and/or data, both in valid SQL to bring the target up-to-date with the source
--   Some tables and/or fields can be ignored in the comparison with a YAML collection in the config file (see File Examples below)
--   Diffs are SUPER fast and this tool has been tested with databases of multiple tables of millions of rows
--   Since this diff tool is being used for migrations, it provides up and down SQL in the same file
--   Works with existing migration tools like Flyway and Simple DB Migrate by specifying output template files/formats, for example, Simple DB Migrate may work with simple-db-migrate.tmpl which includes: `SQL_UP = u""" {{ $up }} """ SQL_DOWN = u""" {{ $down }} """`
--   Is Unicode aware, can work with UTF8 data, which includes foreign characters/symbols
--   Works with just MySQL for now, but we will be expanding to other DBs in the future on request (please create an issue!)
-
-# Pre-requisites
-1. You will need to have access to the command-line, for Linux/Mac a Terminal or on Windows it will be a command prompt (`cmd`)
-2. You will need to have git installed: http://git-scm.com/downloads
-3. You will need to have PHP installed (version 5.4.x): http://php.net/manual/en/install.php
-4. You will need to have Composer installed which is a Dependency Manager for PHP: https://getcomposer.org
-
-_Note: Make a note of where `composer.phar` is installed as we will need it later on during Setup_
+# SQL MIG
 
 # Installation
 On the command-line, use `git` to clone the ssh version:
